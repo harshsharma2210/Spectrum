@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="lib/css/styles.css">
+  <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+  <script src="lib/js/jquery.min.js"></script>
+  <script src="lib/js/popper.min.js"></script>
+  <script src="lib/js/bootstrap.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+
+  <script src="popup.js"></script>
+
+
+</head>
+
+<body style="min-width:300px; max-width:320px;">
+
+  <div class="row m-1">
+    <div class="col-12 text-center">
+      <a href="https://www.spectrumtherapeutics.com/australia/en" target="_blank">
+        <img src="/lib/images/logo_main.png" height=50px; width="200px" alt="logo-plugin-2x" border="0">
+      </a>
+      <button type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="col-12 mt-2 mb-1">
+      <p style="font-size:14px;font-weight:bold;">
+        Select template based on your patient's primary condition
+      </p>
+    </div>
+    <div style="border-bottom:1px solid lightgrey;" class="search col-12 mb-1">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text" style="background-color: white;" id="basic-addon1">
+            <?xml version="1.0" encoding="UTF-8"?>
+            <svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+              <title>/svg/ic_search</title>
+              <desc>Created with Sketch.</desc>
+              <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Item-/-Search" transform="translate(-10.000000, -6.000000)">
+                  <g id="search">
+                    <g id="ic_search" transform="translate(8.000000, 4.000000)">
+                      <polygon id="Path" points="0 0 18 0 18 18 0 18"></polygon>
+                      <path
+                        d="M11.625,10.5 L11.0325,10.5 L10.8225,10.2975 C11.5575,9.4425 12,8.3325 12,7.125 C12,4.4325 9.8175,2.25 7.125,2.25 C4.4325,2.25 2.25,4.4325 2.25,7.125 C2.25,9.8175 4.4325,12 7.125,12 C8.3325,12 9.4425,11.5575 10.2975,10.8225 L10.5,11.0325 L10.5,11.625 L14.25,15.3675 L15.3675,14.25 L11.625,10.5 Z M7.125,10.5 C5.2575,10.5 3.75,8.9925 3.75,7.125 C3.75,5.2575 5.2575,3.75 7.125,3.75 C8.9925,3.75 10.5,5.2575 10.5,7.125 C10.5,8.9925 8.9925,10.5 7.125,10.5 Z"
+                        id="Shape" fill="#ABB8C3" fill-rule="nonzero"></path>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg></span>
+        </div>
+        <input type="text" style="border-left:none;" id="searchBox" class="form-control" placeholder="Search"
+          aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    </div>
+    <div class="pt-2 pl-0 col-12 ml-2 ">
+      <div class="pb-2 d-flex justify-content-between">
+        <span class="pl-0" style="font-size:12px;font-weight:bold;">
+          Active Template
+        </span>
+        <span class="text-success" style="font-size:12px;font-weight:normal;" id="running">
+          Running
+        </span>
+        <span class="text-warning" style="font-size:12px;font-weight:normal;display:none;" id="pause">
+          Pause
+        </span>
+      </div>
+      <div id="noTemplate">
+        <p class="pt-1 text-center m-0" style="color:lightgray;font-size: 15px;" id="selectedTemplate">
+          No Template Selected
+        </p>
+      </div>
+
+    </div>
+    <div class="col-12 ml-0  pl-2 mr-2">
+      <div class="card">
+        <div class="row m-0">
+          <div class="col-8 pl-2 pr-2">
+            <p class="pt-1 pb-1 text-left m-0 pl-0 pr-0 " style="font-size:0.775rem;" id="newSelectedTemplate">
+              <strong>NO TEXT</strong>
+            </p>
+          </div>
+          <div class="col-4 text-right d-flex justify-content-end align-self-center p-1">
+            <button type="button" class="btn btn-outline-success btn-small" id="continue">Continue</button>
+            <span class="text-right " style="cursor:pointer;"><img id="stopButton" src="/lib/images/stop.svg"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  <!-- Modal -->
+  <div class="container mt-3">
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Spectrum Therapeutics</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body" id="modalBody">
+            BODY
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-success  btn-block" data-dismiss="modal">Yes</button>
+            <button type="button" class="btn btn-outline-warning mt-0 btn-block" data-dismiss="modal">No</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-12 pb-3 pt-2" id="templateList"
+    style="max-height:200px;overflow-y:auto;overflow-x:hidden;background-color:#1176ca">
+  </div>
+
+
+
+  <!-- FOOTER -->
+  <footer class="page-footer text-dark" id="footer">
+    <div class="row  ml-1 mr-1">
+      <div class="col-4 mt-md-0 p-0 pl-1">
+        <div class="footer-copyright text-50">
+          <a class="text-dark" target="_blank"
+            href="https://www.spectrumtherapeutics.com/australia/en/legal/privacy-policy"> <small
+              style="font-size: 65%;">Privacy Policy</small></a>
+        </div>
+      </div>
+      <div class="col-4 mt-md-0 p-0 pl-1 text-center">
+        <div class="footer-copyright text-50">
+          <a class="text-dark" target="_blank"
+            href="https://www.spectrumtherapeutics.com/australia/en/legal/terms-of-service"><small
+              style="font-size: 65%;">Terms & Conditions</small></a>
+        </div>
+      </div>
+      <div class="col-4 mt-md-0 p-0 pr-3 text-right">
+        <div class="footer-copyright text-50">
+          <a class="text-dark" target="_blank" href="https://www.spectrumtherapeutics.com/australia/en/contact-us">
+            <small style="font-size: 65%;">Contact</small></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</html>

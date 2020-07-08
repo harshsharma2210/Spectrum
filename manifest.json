@@ -1,0 +1,52 @@
+{
+    "name": "Spectrum",
+    "version": "1.0.1",
+    "manifest_version": 2,
+    "description": "A Canopy Growth Company",
+      "icons": {
+      "16": "/lib/images/logo.png",
+      "24": "/lib/images/logo.png",
+      "48": "/lib/images/logo.png",
+      "96": "/lib/images/logo.png",
+      "128": "/lib/images/logo.png"
+    },
+    "permissions": [
+      "<all_urls>",
+      "activeTab",
+      "tabs",
+      "webRequest",
+      "webRequestBlocking",
+      "storage",
+      "unlimitedStorage",
+      "notifications"
+    ],
+    "browser_action": {
+      "chrome_style": true,
+      "default_title": "Spectrum",
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "/lib/images/logo192.png",
+        "24": "/lib/images/logo192.png",
+        "48": "/lib/images/logo192.png",
+        "96": "/lib/images/logo192.png",
+        "128": "/lib/images/logo192.png"
+      }
+    },
+    "background": {
+      "scripts": ["jquery.min.js",
+        "background.js"
+      ]
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*.sas.tga.gov.au/dashboard/*"],
+        "js": ["lib/js/jquery.min.js", "content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      "lib/js/jquery.min.js",
+      "lib/js/popper.min.js",
+      "lib/js/bootstrap.bundle.min.js"
+    ]
+  }
